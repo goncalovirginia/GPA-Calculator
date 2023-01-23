@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GPA Simulator</title>
+	<title>GPA Calculator</title>
 </head>
 <link rel="stylesheet" href="style.css">
 <body>
-	<h1>GPA SIMULATOR</h1>
+	<h1 id="title">GPA CALCULATOR</h1>
 	<h1 id="gpa">0</h1>
 	<form>
-	<input type="text" id="name" placeholder="Name">
-	<input type="number" id="credits" placeholder="Credits" min="0">
-	<input type="number" id="grade" placeholder="Grade" min="0">
-	<button type="button" id="add"><b>ADD</b></button>
-	<button type="button" id="clear"><b>CLEAR</b></button>
+	<button type="button" id="import">IMPORT</button>
+	<button type="button" id="clear">CLEAR</button>
+	<input type="text" id="name" placeholder="Subject">
+	<input type="number" id="credits" placeholder="Credits" min="1">
+	<input type="number" id="grade" placeholder="Grade" min="1">
+	<button type="button" id="add">ADD</button>
 	</form>
 	<br>
 	<ul id="list"></ul>

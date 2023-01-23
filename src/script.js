@@ -5,6 +5,7 @@ const gradeInput = document.getElementById("grade");
 
 document.getElementById("add").addEventListener("click", addSubject);
 document.getElementById("clear").addEventListener("click", clearSubjects);
+document.getElementById("import").addEventListener("click", importSubjects);
 
 const list = document.getElementById("list");
 
@@ -23,6 +24,12 @@ class Subject {
 
 function addSubject() {
 	let subject = new Subject(nameInput.value, Number(creditsInput.value), Number(gradeInput.value));
+
+	if (subject.name.length < 1 || subject.credits < 1 || subject.grade < 1) {
+		alert("Subject name must be at least 1 character long.\nCredits and Grade must be at least 1.");
+		return;
+	}
+
 	nameInput.value = "";
 	creditsInput.value = "";
 	gradeInput.value = "";
@@ -32,11 +39,9 @@ function addSubject() {
 	let removeButton = document.createElement("button");
 	removeButton.setAttribute("id", "remove");
 	removeButton.addEventListener("click", removeSubject);
-	removeButton.innerHTML = "REMOVE";
+	removeButton.innerHTML = '<i class="gg-trash"></i>';
 	li.appendChild(removeButton);
 	list.appendChild(li);
-
-	console.log(removeButton.innerHTML);
 
 	totalWeight += subject.weight;
 	totalCredits += subject.credits;
@@ -57,4 +62,19 @@ function clearSubjects() {
 	totalWeight = 0;
 	totalCredits = 0;
 	gpaDisplay.innerHTML = 0;
+}
+
+function importSubjects() {
+	let content = selectAndReadFile();
+	console.log(content);
+}
+
+function selectAndReadFile() {
+	let input = document.createElement('input');
+	input.type = 'file';
+	input.onchange = event => {
+		let files = Array.from(input.files);
+		console.log(files);
+	};
+	input.click();
 }
