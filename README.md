@@ -1,1 +1,1 @@
-# GPA-Simulator
+# GPA-Calculator
