@@ -5,6 +5,10 @@
     background-color: rgb(25, 25, 25);
 }
 
+#gpa {
+    margin: 40px;
+}
+
 html, body {
     margin: 0px;
     height: 100%;
@@ -70,7 +74,8 @@ button:active {
 }
 
 #remove {
-    margin: 2px 12px;
+    opacity: 0%;
+    margin: 5px;
     height: 30px;
     width: 36px;
     background-color: #f73131;
@@ -95,14 +100,33 @@ input:focus {
     transition-duration: 200ms;
 }
 
-#list {
-    padding: 0px;
-    list-style-type: none;
+#subjectsTable {
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 50px;
+    text-align: left;
+    border: none;
+    border-collapse: collapse;
     font-size: 20px;
 }
 
-li {
-    margin: 10px;
+tr:nth-child(even) {background-color: rgb(25, 25, 25);}
+
+th {
+    min-width: 150px;
+    height: 40px;
+}
+
+td {
+    min-width: 150px;
+}
+
+tr:hover #remove {
+    opacity: 100%;
+}
+
+#last {
+    min-width: 44px;
 }
 
 .gg-trash {

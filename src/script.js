@@ -8,7 +8,7 @@ document.getElementById("clear").addEventListener("click", clearSubjects);
 document.getElementById("import").addEventListener("click", readFileAsString);
 document.getElementById("export").addEventListener("click", exportSubjects);
 
-const list = document.getElementById("list");
+const table = document.getElementById("subjectsTable");
 
 let totalWeight = 0, totalCredits = 0;
 
@@ -39,14 +39,20 @@ function addSubject(name, credits, grade) {
 	creditsInput.value = "";
 	gradeInput.value = "";
 
-	let li = document.createElement("li");
-	li.appendChild(document.createTextNode(subject.name + " " + subject.credits + " " + subject.grade + " "));
+	let tr = document.createElement("tr");
+
+	for (item of [subject.name, subject.credits, subject.grade]) {
+		let td = document.createElement("td");
+		td.appendChild(document.createTextNode(item));
+		tr.appendChild(td);
+	}
+
 	let removeButton = document.createElement("button");
 	removeButton.setAttribute("id", "remove");
 	removeButton.addEventListener("click", removeSubject);
 	removeButton.innerHTML = '<i class="gg-trash"></i>';
-	li.appendChild(removeButton);
-	list.appendChild(li);
+	tr.appendChild(removeButton);
+	table.appendChild(tr);
 
 	totalWeight += subject.weight;
 	totalCredits += subject.credits;
@@ -55,15 +61,18 @@ function addSubject(name, credits, grade) {
 }
 
 function removeSubject() {
-	let subject = list.removeChild(event.target.parentElement).firstChild.wholeText.split(" ");
-	totalWeight -= subject[1] * subject[2];
-	totalCredits -= Number(subject[1]);
+	let subject = table.removeChild(event.target.parentElement).children;
+	totalWeight -= subject[1].innerHTML * subject[2].innerHTML;
+	totalCredits -= Number(subject[1].innerHTML);
 	gpaDisplay.innerHTML = totalWeight / totalCredits;
 	if (totalCredits == 0) gpaDisplay.innerHTML = 0;
 }
 
 function clearSubjects() {
-	list.innerHTML = "";
+	while (table.children.length > 1) {
+		table.removeChild(table.lastChild);
+	}
+
 	totalWeight = 0;
 	totalCredits = 0;
 	gpaDisplay.innerHTML = 0;
@@ -88,7 +97,7 @@ function readFileAsString() {
 }
 
 function importSubjects(content) {
-	list.innerHTML = "";
+	clearSubjects();
 
 	for (line of content.split("\n")) {
 		let items = line.split(" ");
@@ -97,17 +106,18 @@ function importSubjects(content) {
 }
 
 function exportSubjects() {
-	if (list.innerHTML == "") {
+	if (table.children.length < 2) {
 		alert("There must be at least 1 subject in the list.");
 		return;
 	}
 
 	let content = "";
 
-	for (item of list.getElementsByTagName("li")) {
-		content += item.innerHTML.split("<button")[0] + "\n";
-		console.log(content);
+	for (row of table.getElementsByTagName("tr")) {
+		content += row.children[0].innerHTML + " " + row.children[1].innerHTML + " " + row.children[2].innerHTML + "\n";
 	}
+
+	content = content.substring(content.indexOf("\n")+1);
 
 	var element = document.createElement('a');
   	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
