@@ -1,8 +1,14 @@
+#navbar {
+    position: fixed;
+    width: 100%;
+}
+
 #title {
     padding: 15px;
     margin: 0px;
     text-align: center;
     background-color: rgb(25, 25, 25);
+    top: 0px;
 }
 
 #gpaCircle {
@@ -22,7 +28,7 @@
 }
 
 .vertical-space {
-    height: 50px;
+    height: 125px;
 }
 
 .grid-container {
