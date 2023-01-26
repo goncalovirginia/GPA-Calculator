@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>GPA Calculator</title>
 </head>
 <link rel="stylesheet" href="style.css">
+
 <body>
 	<h1 id="title">GPA CALCULATOR</h1>
-	<h1 id="gpa">0</h1>
-	<form>
-	<button type="button" id="import" title="Import .txt file.">IMPORT</button>
-	<button type="button" id="export" title="Export to .txt file.">EXPORT</button>
-	<button type="button" id="clear">CLEAR</button>
-	<input type="text" id="name" placeholder="Subject">
-	<input type="number" id="credits" placeholder="Credits" min="1">
-	<input type="number" id="grade" placeholder="Grade" min="1">
-	<button type="button" id="add">ADD</button>
-	</form>
-	<table id="subjectsTable">
-		<tr>
-			<th>SUBJECT</th>
-			<th>CREDITS</th>
-			<th>GRADE</th>
-			<th id="last"></th>
-		</tr>
-	</table>
+	<div class="vertical-space"></div>
+	<div class="grid-container">
+		<div id="grid-child1">
+			<div id="gpaCircle">
+				<h1 id="gpaDisplay">0</h1>
+			</div>
+			<br>
+			<br>
+			<form>
+				<button type="button" id="import" title="Import .txt file.">IMPORT</button>
+				<button type="button" id="export" title="Export to .txt file.">EXPORT</button>
+				<button type="button" id="clear">CLEAR</button>
+			</form>
+			<br>
+			<br>
+			<div id="inputs">
+				<input type="text" id="name" placeholder="Subject">
+				<input type="number" id="credits" placeholder="Credits" min="1">
+				<input type="number" id="grade" placeholder="Grade" min="1">
+				<button type="button" id="add">ADD</button>
+			</div>
+		</div>
+		<div id="grid-child2">
+			<table id="subjectsTable">
+				<tr>
+					<th class="subjects-th">SUBJECT</th>
+					<th class="subjects-th">CREDITS</th>
+					<th class="subjects-th">GRADE</th>
+					<th class="subjects-th" id="last"> </th>
+				</tr>
+			</table>
+		</div>
+	</div>
 	<script src="script.js"></script>
 </body>
+
 </html>

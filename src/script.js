@@ -1,4 +1,4 @@
-const gpaDisplay = document.getElementById("gpa");
+const gpaDisplay = document.getElementById("gpaDisplay");
 const nameInput = document.getElementById("name");
 const creditsInput = document.getElementById("credits");
 const gradeInput = document.getElementById("grade");
@@ -23,6 +23,11 @@ class Subject {
 
 }
 
+function updateGPADisplay() {
+	gpaDisplay.innerHTML = (totalWeight / totalCredits).toFixed(2);
+	if (totalCredits == 0) gpaDisplay.innerHTML = 0;
+}
+
 function addSubjectThroughInput() {
 	addSubject(nameInput.value, Number(creditsInput.value), Number(gradeInput.value));
 }
@@ -40,9 +45,11 @@ function addSubject(name, credits, grade) {
 	gradeInput.value = "";
 
 	let tr = document.createElement("tr");
+	tr.setAttribute("class", "subjects-tr");
 
 	for (item of [subject.name, subject.credits, subject.grade]) {
 		let td = document.createElement("td");
+		td.setAttribute("class", "subjects-td");
 		td.appendChild(document.createTextNode(item));
 		tr.appendChild(td);
 	}
@@ -56,16 +63,14 @@ function addSubject(name, credits, grade) {
 
 	totalWeight += subject.weight;
 	totalCredits += subject.credits;
-	gpaDisplay.innerHTML = totalWeight / totalCredits;
-	if (totalCredits == 0) gpaDisplay.innerHTML = 0;
+	updateGPADisplay();
 }
 
 function removeSubject() {
 	let subject = table.removeChild(event.target.parentElement).children;
 	totalWeight -= subject[1].innerHTML * subject[2].innerHTML;
 	totalCredits -= Number(subject[1].innerHTML);
-	gpaDisplay.innerHTML = totalWeight / totalCredits;
-	if (totalCredits == 0) gpaDisplay.innerHTML = 0;
+	updateGPADisplay();
 }
 
 function clearSubjects() {

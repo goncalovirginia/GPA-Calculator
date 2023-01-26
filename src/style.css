@@ -5,8 +5,43 @@
     background-color: rgb(25, 25, 25);
 }
 
-#gpa {
-    margin: 40px;
+#gpaCircle {
+    margin-left: auto;
+    margin-right: auto;
+    height: 170px;
+    width: 170px;
+    border: 10px solid rgb(25, 25, 25);
+    border-radius: 50%;
+    background-color: #04AA6D;
+    align-items: center;
+}
+
+#gpaDisplay {
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+.vertical-space {
+    height: 50px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.75fr 1fr ;
+}
+
+#grid-child1 {
+    width: 200px;
+    border-right: 2px solid rgb(25, 25, 25);
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: auto;
+}
+
+#grid-child2 {
+    padding-left: 75px;
+    padding-right: 50px;
+    margin-right: auto;
 }
 
 html, body {
@@ -22,7 +57,7 @@ button {
     font-family: Helvetica;
     font-size: 16px;
     height: 44px;
-    width: 90px;
+    width: 170px;
     margin: 8px 4px;
     border: none;
     border-radius: 12px;
@@ -37,7 +72,7 @@ button:active {
 
 #add {
     background-color: #04AA6D;
-    box-shadow: 0 4px 0 #265a12;
+    box-shadow: 0 4px 0 #1c3f0f;
 }
 
 #add:active {
@@ -54,7 +89,7 @@ button:active {
 }
 
 #import {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     box-shadow: 0 4px 0 #858585;
 }
 
@@ -64,7 +99,7 @@ button:active {
 }
 
 #export {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     box-shadow: 0 4px 0 #858585;
 }
 
@@ -101,31 +136,47 @@ input:focus {
 }
 
 #subjectsTable {
-    margin-left: auto;
-    margin-right:auto;
-    margin-top: 50px;
     text-align: left;
     border: none;
     border-collapse: collapse;
     font-size: 20px;
 }
 
-tr:nth-child(even) {background-color: rgb(25, 25, 25);}
-
-th {
-    min-width: 150px;
-    height: 40px;
+#infoTable {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+    border: none;
+    border-collapse: collapse;
+    background-color: rgb(25, 25, 25);
 }
 
-td {
-    min-width: 150px;
+#infoTable td {
+    min-width: 200px;
 }
 
-tr:hover #remove {
+.subjects-tr:nth-child(even) {background-color: rgb(25, 25, 25);}
+
+.subjects-tr:hover #remove {
     opacity: 100%;
 }
 
+.subjects-th {
+    min-width: 110px;
+    padding-right: 40px;
+    height: 40px;
+    border-bottom: 1pt solid rgb(255, 255, 255);
+}
+
+.subjects-td {
+    min-width: 110px;
+    padding-right: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 #last {
+    padding-right: 0px;
     min-width: 44px;
 }
 
