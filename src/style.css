@@ -1,53 +1,114 @@
-#navbar {
-    position: fixed;
-    width: 100%;
+.container {
+    min-width: 1000px;
+    width: 60%;
+    height: 500px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background: linear-gradient(-30deg, #ee7752, #e73c7e, #761bdd, #235bd5);
+	background-size: 400% 400%;
+	animation: gradient 30s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#top-grid {
+    grid-template-columns: 1fr 1fr;
+    height: 225px;
+}
+
+#title-grid {
+    padding-top: 50px;
+    margin-left: 100px;
+    grid-template-columns: 64px 250px;
+    height: 64px;
+    gap: 20px;
+}
+
+#grid-gpa-display {
+    grid-template-columns: 1fr 175px;
+    gap: 25px;
+}
+
+#graduation-hat {
+    width: 64px;
+    height: 64px;
 }
 
 #title {
-    padding: 15px;
+    text-align: left;
     margin: 0px;
-    text-align: center;
-    background-color: rgb(25, 25, 25);
-    top: 0px;
+    padding-top: 15px;
+}
+
+#subtitle {
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 100px;
+    text-align: left;
 }
 
 #gpaCircle {
-    margin-left: auto;
-    margin-right: auto;
     height: 170px;
     width: 170px;
-    border: 10px solid rgb(25, 25, 25);
     border-radius: 50%;
-    background-color: #04AA6D;
+    background-image: linear-gradient(to bottom right, rgb(20, 20, 20), rgb(40, 40, 40));
     align-items: center;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+}
+
+#gpaCircleTitle {
+    font-size: 24px;
+    margin-bottom: 5px;
 }
 
 #gpaDisplay {
     font-size: 60px;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .vertical-space {
-    height: 125px;
+    height: 50px;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 0.75fr 1fr ;
+    grid-template-columns: 1fr 1fr;
 }
 
 #grid-child1 {
-    width: 200px;
-    border-right: 2px solid rgb(25, 25, 25);
-    padding-left: 50px;
-    padding-right: 50px;
-    margin-left: auto;
+    float: right;
+    margin-top: 275px;
 }
 
 #grid-child2 {
-    padding-left: 75px;
-    padding-right: 50px;
+    margin-left: 75px;
+    background-image: linear-gradient(to bottom right, rgb(20, 20, 20), rgb(40, 40, 40));
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
     margin-right: auto;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+#rightside-buttons {
+    margin-top: 5px;
+    margin-right: 75px;
 }
 
 html, body {
@@ -63,9 +124,10 @@ button {
     font-family: Helvetica;
     font-size: 16px;
     height: 44px;
-    width: 170px;
-    margin: 8px 4px;
-    border: none;
+    width: 100px;
+    margin: 5px;
+    border: 0px;
+    padding: 0px;
     border-radius: 12px;
     cursor: pointer;
     transform: translateY(-2px);
@@ -77,6 +139,8 @@ button:active {
 }
 
 #add {
+    margin: 0px;
+    width: 412px;
     background-color: #04AA6D;
     box-shadow: 0 4px 0 #1c3f0f;
 }
@@ -115,7 +179,6 @@ button:active {
 }
 
 #remove {
-    opacity: 0%;
     margin: 5px;
     height: 30px;
     width: 36px;
@@ -128,62 +191,64 @@ button:active {
 }
 
 input {
-    font-size: 16px;
-    height: 36px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 18px;
+    height: 40px;
     width: 160px;
-    margin: 8px 2px;
-    border: 3px solid rgb(230, 230, 230);
-    outline: none;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
 }
 
 input:focus {
-    border: 3px solid #04AA6D;
-    transition-duration: 200ms;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.credits {
+    width: 100px;
+}
+
+select {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 18px;
+    height: 40px;
+    width: 100px;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+select:focus {
+    outline: none;
+}
+
+select option {
+    background-color: rgb(25, 25, 25);
 }
 
 #subjectsTable {
     text-align: left;
-    border: none;
     border-collapse: collapse;
     font-size: 20px;
 }
 
-#infoTable {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: right;
-    border: none;
-    border-collapse: collapse;
-    background-color: rgb(25, 25, 25);
-}
-
-#infoTable td {
-    min-width: 200px;
-}
-
 .subjects-tr:nth-child(even) {background-color: rgb(25, 25, 25);}
-
-.subjects-tr:hover #remove {
-    opacity: 100%;
-}
-
-.subjects-th {
-    min-width: 110px;
-    padding-right: 40px;
-    height: 40px;
-    border-bottom: 1pt solid rgb(255, 255, 255);
-}
 
 .subjects-td {
     min-width: 110px;
     padding-right: 40px;
     padding-top: 0px;
     padding-bottom: 0px;
-}
-
-#last {
-    padding-right: 0px;
-    min-width: 44px;
+    min-width: 200px;
+    padding: 10px;
 }
 
 .gg-trash {
@@ -201,7 +266,7 @@ input:focus {
     border-bottom-left-radius: 1px;
     border-bottom-right-radius: 1px;
     pointer-events: none;
-    margin-left: 7px;
+    margin-left: 13px;
     margin-top: 3px;
 }
    
