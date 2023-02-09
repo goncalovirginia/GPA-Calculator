@@ -7,43 +7,46 @@
 <link rel="stylesheet" href="style.css">
 
 <body>
-	<div class="container">
-		<div class="grid-container" id="top-grid">
-			<div>
-				<div class="grid-container" id="title-grid">
-					<img id="graduation-hat" src="../icons/graduation-hat.png">
-					<h1 id="title">GPA Calculator</h1>
+	<div class="center-horizontally">
+		<div class="container">
+			<div class="grid-container" id="top-grid">
+				<div>
+					<div class="grid-container" id="title-grid">
+						<img id="graduation-hat" src="../icons/graduation-hat.png">
+						<h1 id="title">GPA Calculator</h1>
+					</div>
+					<p id="subtitle">Calculate your university Grade Point Average as per the European Credit Transfer
+						and Accumulation System (ECTS).</p>
 				</div>
-			<p id="subtitle">Calculate your university Grade Point Average as per the European Credit Transfer and Accumulation System (ECTS).</p>
-			</div>
-			<div>
-				<div id="grid-child1">
-					<div class="grid-container" id="grid-gpa-display">
-						<div id="gpaCircle">
-							<h1 id="gpaCircleTitle">GPA</h1>
-							<h1 id="gpaDisplay">0</h1>
-						</div>
-						<div id="rightside-buttons">
-							<button type="button" id="import" title="Import .txt file.">IMPORT</button>
-							<button type="button" id="export" title="Export to .txt file.">EXPORT</button>
-							<button type="button" id="clear" title="Clear subject list.">CLEAR</button>
+				<div>
+					<div id="grid-child1">
+						<div class="grid-container" id="grid-gpa-display">
+							<div id="gpaCircle">
+								<h1 id="gpaCircleTitle">GPA</h1>
+								<h1 id="gpaDisplay">0</h1>
+							</div>
+							<div id="rightside-buttons">
+								<button type="button" id="import" title="Import .txt file.">IMPORT</button>
+								<button type="button" id="export" title="Export to .txt file.">EXPORT</button>
+								<button type="button" id="clear" title="Clear subject list.">CLEAR</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="vertical-space"></div>
+			<div class="vertical-space"></div>
 
-		<div class="grid-container">
-			<div id="grid-child2">
-				<table id="subjectsTable"></table>
-				<br>
-				<button type="button" id="add">ADD SUBJECT</button>
+			<div class="grid-container">
+				<div id="grid-child2">
+					<table id="subjectsTable"></table>
+					<br>
+					<button type="button" id="add">ADD SUBJECT</button>
+				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<br>
 
 	<script src="script.js"></script>

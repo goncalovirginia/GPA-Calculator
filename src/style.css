@@ -1,11 +1,13 @@
+.center-horizontally {
+    text-align: center;
+}
+
 .container {
+    display: inline-block;
     min-width: 1000px;
     width: 60%;
     height: 500px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 25px;
     border-radius: 10px;
     background: linear-gradient(-30deg, #ee7752, #e73c7e, #761bdd, #235bd5);
 	background-size: 400% 400%;
