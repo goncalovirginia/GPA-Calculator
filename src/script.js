@@ -20,10 +20,17 @@ class Subject {
 
 }
 
-addSubjectRow("DSA", 9, 19);
-addSubjectRow("OSF", 9, 15);
-addSubjectRow("CN", 6, 16);
-addEmptySubjectRow();
+let localStorageSubjects = localStorage.getItem("subjects");
+
+if (localStorageSubjects == null) {
+	addSubjectRow("DSA", 9, 19);
+	addSubjectRow("OSF", 9, 15);
+	addSubjectRow("CN", 6, 16);
+	addEmptySubjectRow();
+}
+else {
+	importSubjects(localStorageSubjects);
+}
 
 function addEmptySubjectRow() {
 	addSubjectRow("", "", "");
@@ -89,7 +96,10 @@ function addSubjectRow(name, credits, grade) {
 	removeButton.setAttribute("id", "remove");
 	removeButton.addEventListener("click", removeSubject);
 	removeButton.innerHTML = '<i class="gg-trash"></i>';
-	tr.appendChild(removeButton);
+
+	td = document.createElement("td");
+	td.appendChild(removeButton);
+	tr.appendChild(td);
 
 	table.appendChild(tr);
 
@@ -97,7 +107,7 @@ function addSubjectRow(name, credits, grade) {
 }
 
 function removeSubject() {
-	table.removeChild(event.target.parentElement);
+	table.removeChild(event.target.parentElement.parentElement);
 	updateGPA();
 }
 
@@ -117,6 +127,8 @@ function updateGPA() {
 
 	gpaDisplay.innerHTML = (totalWeight / totalCredits).toFixed(2);
 	if (totalCredits == 0) gpaDisplay.innerHTML = 0;
+
+	localStorage.setItem("subjects", getSubjectsAsString());
 }
 
 function clearSubjects() {
@@ -149,6 +161,25 @@ function importSubjects(content) {
 		let items = line.split(" ");
 		addSubjectRow(items[0], Number(items[1]), Number(items[2]));
 	}
+
+	table.removeChild(table.lastChild);
+	addEmptySubjectRow();
+}
+
+function getSubjectsAsString() {
+	let content = "";
+
+	for (row of table.getElementsByTagName("tr")) {
+		let name = row.children[0].children[0].value;
+		let credits = row.children[1].children[0].value;
+		let grade = row.children[2].children[0].value;
+
+		if (name != "" && credits != "" && grade != "") {
+			content += name + " " + credits + " " + grade + "\n";
+		}
+	}
+
+	return content;
 }
 
 function exportSubjects() {
@@ -157,22 +188,8 @@ function exportSubjects() {
 		return;
 	}
 
-	let content = "";
-
-	for (row of table.getElementsByTagName("tr")) {
-		let name = row.children[0].children[0].value;
-		let credits = row.children[1].children[0].value;
-		let grade = row.children[2].children[0].value;
-
-		console.log(name);
-
-		if (name != "" && credits != "" && grade != "") {
-			content += name + " " + credits + " " + grade + "\n";
-		}
-	}
-
 	let element = document.createElement('a');
-  	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+  	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(getSubjectsAsString()));
   	element.setAttribute('download', 'subjects');
 
   	element.style.display = 'none';
@@ -181,5 +198,7 @@ function exportSubjects() {
 	element.click();
 
   	document.body.removeChild(element);
+
+	return content;
 }
 
